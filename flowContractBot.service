@@ -1,0 +1,20 @@
+[Unit]
+Description=Flow contract deployment
+
+#replace mysuer with your user
+[Service]
+User=myuser
+Group=OF
+
+Environment="WEBHOOK_URL=??"
+Environment="EVENTS_FILE=flowContractBotMainnet.events"
+
+//replace contractBot with where you put this file
+WorkingDirectory=/home/myuser/flowContractBot
+ExecStart=/home/myuser/contractbot/flowContractBot
+
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
